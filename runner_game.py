@@ -15,7 +15,7 @@ Screen_Width = 1920
 Screen = pygame.display.set_mode((Screen_Width, Screen_Height))
 
 pygame.init()
-background = 'C:/Desktop/Runner Game/runner bg.png'
+background = 'Runner Game/runner bg.png'
 clock = pygame.time.Clock()
 
 #The gameloop
