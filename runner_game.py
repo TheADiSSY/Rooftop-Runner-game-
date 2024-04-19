@@ -21,8 +21,6 @@ clock = pygame.time.Clock()
 #The gameloop
 running = True
 while running:
-    #The game's background
-    Screen.blit(background, (0, 0))
     
     # Update the display
     pygame.display.flip()
