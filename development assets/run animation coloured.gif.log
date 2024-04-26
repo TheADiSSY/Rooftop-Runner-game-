@@ -1,0 +1,22 @@
+C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Skrivbordet/Krita (x64)/bin/ffmpeg.exe -hide_banner -y -y -r 30 -start_number 0 -start_number_range 1 -i C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/runframe%04d.png -i C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/Programering 1/Runner Game/development assets/KritaTempPalettegen_%06d.png -lavfi [0:v][1:v]paletteuse=dither=sierra2_4a:diff_mode=none -f gif -loop 0 -gifflags +transdiff C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/Programering 1/Runner Game/development assets/run animation coloured.gif
+=====================================================
+Input #0, image2, from 'C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/runframe%04d.png':
+  Duration: 00:00:00.80, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc), 1920x1920 [SAR 11813:11813 DAR 1:1], 25 fps, 25 tbr, 25 tbn, 25 tbc
+Input #1, image2, from 'C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/Programering 1/Runner Game/development assets/KritaTempPalettegen_%06d.png':
+  Duration: 00:00:00.04, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: png, rgba(pc), 16x16 [SAR 1:1 DAR 1:1], 25 fps, 25 tbr, 25 tbn, 25 tbc
+Stream mapping:
+  Stream #0:0 (png) -> paletteuse:default
+  Stream #1:0 (png) -> paletteuse:palette
+  paletteuse -> Stream #0:0 (gif)
+Press [q] to stop, [?] for help
+[image2 @ 000001b54f758480] Thread message queue blocking; consider raising the thread_queue_size option (current value: 8)
+Output #0, gif, to 'C:/Users/tisgot23adioka/OneDrive - Thorengruppen/Kurser/Programering 1/Runner Game/development assets/run animation coloured.gif':
+  Metadata:
+    encoder         : Lavf58.76.100
+  Stream #0:0: Video: gif, pal8(pc, gbr/unknown/unknown, progressive), 1920x1920 [SAR 1:1 DAR 1:1], q=2-31, 200 kb/s, 30 fps, 100 tbn (default)
+    Metadata:
+      encoder         : Lavc58.134.100 gif
+frame=    1 fps=0.0 q=-0.0 size=       0kB time=00:00:00.01 bitrate=   0.0kbits/s speed=0.0791x    frame=    5 fps=0.0 q=-0.0 size=     256kB time=00:00:00.14 bitrate=14979.7kbits/s speed=0.189x    frame=    9 fps=6.7 q=-0.0 size=     512kB time=00:00:00.28 bitrate=14979.7kbits/s speed=0.21x    frame=   13 fps=6.6 q=-0.0 size=    1024kB time=00:00:00.41 bitrate=20460.0kbits/s speed=0.209x    frame=   16 fps=6.2 q=-0.0 size=    1280kB time=00:00:00.51 bitrate=20560.3kbits/s speed=0.197x    frame=   20 fps=6.4 q=-0.0 size=    1536kB time=00:00:00.64 bitrate=19660.8kbits/s speed=0.204x    frame=   20 fps=6.1 q=-0.0 Lsize=    1742kB time=00:00:00.64 bitrate=22302.1kbits/s speed=0.196x    
+video:1742kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.001121%
