@@ -1,8 +1,7 @@
 #Placeholder name for running game
 import pygame, sys, gif_pygame
 import random
-from PIL import Image, ImageTk
-from tkinter import Label, PhotoImage, Tk
+import time
 
 
 #Name, background and CLOCK
@@ -26,15 +25,17 @@ Vent = pygame.image.load('Runner Game/vent.png')
 Vent_spawn = False
 
 #Player
-Player = "run"
 Player_x = 270
 Player_y = 340
+
+Player = "run"
 Run_animation = gif_pygame.load("Runner Game/Player Character/run animation coloured.gif") 
 gif_pygame.transform.scale(Run_animation, (700, 700))
+
 Jump_animation = gif_pygame.load("Runner Game/Player Character/jump animation coloured with smear.gif")
 gif_pygame.transform.scale(Jump_animation, (700, 700))
-
-#asset coordinates
+Jump_time = 0
+#obstacle coordinates
 vent_x = 1910
 vent_y = 750
 
@@ -48,18 +49,23 @@ while running:
     Screen.blit(Background,(0,0))
     Floor.render(Background, (0,800))
 
-    #Player
+    #Player (and player states)
     if Player == "run":
         Run_animation.render(Background, (Player_x, Player_y))
-        pygame.display.update()
+        Jump_time = 0
+    
     keys = pygame.key.get_pressed()
     if keys[pygame.K_SPACE]:
         Player = "jump"
     
     if Player == "jump":
-        Jump_animation.render(Background, (Player_x, Player_y))
-        
-        Player = "run"
+        Jump_animation.render(Background, (Player_x, Player_y)) 
+        Jump_time == Jump_time + 1
+    
+    if Jump_time > 15:
+        Player = "run" 
+    
+
     #Obstacles
     Obstacle_chance = random.randint(1,20)
     if Obstacle_chance == 5:
