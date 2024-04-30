@@ -19,9 +19,9 @@ clock = pygame.time.Clock()
 
 
 #Hand drawn assets
-Floor = gif_pygame.load("Runner Game/floor/amazing floor.gif")
-Background = pygame.image.load('Runner Game/runner bg.png')
-Vent = pygame.image.load('Runner Game/vent.png')
+Floor = gif_pygame.load("floor/amazing-floor.gif")
+Background = pygame.image.load("runner-bg.png")
+Vent = pygame.image.load("vent.png")
 Vent_spawn = False
 
 #Player
@@ -29,10 +29,10 @@ Player_x = 270
 Player_y = 340
 
 Player = "run"
-Run_animation = gif_pygame.load("Runner Game/Player Character/run animation coloured.gif") 
+Run_animation = gif_pygame.load("Player-Character/run-animation-coloured.gif") 
 gif_pygame.transform.scale(Run_animation, (700, 700))
 
-Jump_animation = gif_pygame.load("Runner Game/Player Character/jump animation coloured with smear.gif")
+Jump_animation = gif_pygame.load("Player-Character/jump-animation-coloured-with-smear.gif")
 gif_pygame.transform.scale(Jump_animation, (700, 700))
 Jump_time = 0
 #obstacle coordinates
