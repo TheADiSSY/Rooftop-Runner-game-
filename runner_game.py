@@ -60,9 +60,9 @@ while running:
     
     if Player == "jump":
         Jump_animation.render(Background, (Player_x, Player_y)) 
-        Jump_time == Jump_time + 1
+        Jump_time = Jump_time + 1
     
-    if Jump_time > 15:
+    if Jump_time >= 15:
         Player = "run" 
     
 
