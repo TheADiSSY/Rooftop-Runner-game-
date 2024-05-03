@@ -19,25 +19,28 @@ clock = pygame.time.Clock()
 
 
 #Hand drawn assets
-Floor = gif_pygame.load("floor/amazing-floor.gif")
-Background = pygame.image.load("runner-bg.png")
-Vent = pygame.image.load("vent.png")
+Floor = gif_pygame.load("./floor/amazing-floor.gif")
+Background = pygame.image.load("./runner-bg.png")
+Vent = pygame.image.load("./vent.png")
+pygame.transform.scale(Vent, (700, 700))
 Vent_spawn = False
 
-#Player
+#obstacle coordinates
+vent_x = 1900
+vent_y = 400
+
+#Player (loading states, setting sizes and setting coordinates coordinates) 
 Player_x = 270
 Player_y = 340
 
 Player = "run"
-Run_animation = gif_pygame.load("Player-Character/run-animation-coloured.gif") 
+Run_animation = gif_pygame.load("./Player-Character/run-animation-coloured.gif") 
 gif_pygame.transform.scale(Run_animation, (700, 700))
 
-Jump_animation = gif_pygame.load("Player-Character/jump-animation-coloured-with-smear.gif")
+Jump_animation = gif_pygame.load("./Player-Character/jump-animation-coloured-with-smear.gif")
 gif_pygame.transform.scale(Jump_animation, (700, 700))
 Jump_time = 0
-#obstacle coordinates
-vent_x = 1910
-vent_y = 750
+
 
 
 #The gameloop
@@ -50,10 +53,12 @@ while running:
     Floor.render(Background, (0,800))
 
     #Player (and player states)
+    #Running. Being in this state constantly causes our jump timer to be 0
     if Player == "run":
         Run_animation.render(Background, (Player_x, Player_y))
         Jump_time = 0
     
+    #Jumping. Nothing here sets the jump timer to 0 so now the game can keep track of how long you've been in the jump state
     keys = pygame.key.get_pressed()
     if keys[pygame.K_SPACE]:
         Player = "jump"
@@ -67,17 +72,31 @@ while running:
     
 
     #Obstacles
-    Obstacle_chance = random.randint(1,20)
-    if Obstacle_chance == 5:
+    if Vent_spawn == False:
+        Obstacle_chance = random.randint(1,2)
+    
+    if Obstacle_chance == 2:
         Vent_spawn = True
-
+    
     if Vent_spawn == True:
         Background.blit(Vent,(vent_x,vent_y))
 
+    if Vent_spawn == True:
+        vent_x = vent_x - 5
     
-    #Closing the game
+    if vent_x == 0:
+        Vent_spawn = False
+
+    if Vent_spawn == False:
+        vent_x = 1920
+    
+    #Closing the game and lose conditions
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            running = False
+    
+    if Player_x == vent_x:
+        if Player != "jump":
             running = False
 
     #Score display
